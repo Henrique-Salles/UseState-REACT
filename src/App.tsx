@@ -1,10 +1,14 @@
 import { useState } from "react";
 
 export default function App() {
-  const [input, setInput] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputAge, setInputAge] = useState("");
+  const [aluno, setAluno] = useState("");
+  const [age, setAge] = useState("");
 
   function mostrarAluno() {
-    console.log(input);
+    setAluno(inputName);
+    setAge(inputAge);
   }
 
   return (
@@ -13,13 +17,27 @@ export default function App() {
 
       <input
         placeholder="Digite o nome"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        value={inputName}
+        onChange={(e) => setInputName(e.target.value)}
       />
 
       <br />
+      <br />
+
+      <input
+        placeholder="Digite a idade"
+        value={inputAge}
+        onChange={(e) => setInputAge(e.target.value)}
+      />
+
+      <br />
+      <br />
 
       <button onClick={mostrarAluno}>Mostrar Aluno</button>
+      <hr />
+
+      <h3>Aluno: {aluno}</h3>
+      <h3>Idade: {age}</h3>
     </div>
   );
 }
