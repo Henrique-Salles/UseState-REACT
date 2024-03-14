@@ -1,14 +1,21 @@
 import { useState } from "react";
 
+interface InfoProps {
+  name: string;
+  age: string;
+}
+
 export default function App() {
   const [inputName, setInputName] = useState("");
   const [inputAge, setInputAge] = useState("");
-  const [aluno, setAluno] = useState("");
-  const [age, setAge] = useState("");
+
+  const [info, setInfo] = useState<InfoProps>();
 
   function mostrarAluno() {
-    setAluno(inputName);
-    setAge(inputAge);
+    setInfo({
+      name: inputName,
+      age: inputAge,
+    });
   }
 
   return (
@@ -36,8 +43,8 @@ export default function App() {
       <button onClick={mostrarAluno}>Mostrar Aluno</button>
       <hr />
 
-      <h3>Aluno: {aluno}</h3>
-      <h3>Idade: {age}</h3>
+      <h3>Aluno: {info?.name}</h3>
+      <h3>Idade: {info?.age}</h3>
     </div>
   );
 }
